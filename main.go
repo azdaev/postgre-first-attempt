@@ -14,7 +14,7 @@ type User struct {
 }
 
 func main() {
-	urlExample := "postgres://postgres:madina12@localhost:5432/postgres"
+	urlExample := fmt.Sprintf("postgres://postgres:%s@localhost:5432/postgres", os.Getenv("password"))
 	conn, err := pgx.Connect(context.Background(), urlExample)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Unable to connect to database: %v\n", err)
